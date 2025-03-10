@@ -1,8 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
-import loginRoute from "./routes/login.js";
-import signupRoute from "./routes/signUp.js";
+import routes from "./routes/routes.js";
 
 dotenv.config();
 
@@ -12,8 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api", loginRoute);
-app.use("/api", signupRoute);
+app.use("/api", routes);
 
 app.listen(PORT, () => {
   connectDB();
