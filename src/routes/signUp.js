@@ -8,6 +8,10 @@ router.post("/signup", async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
+    if (!["teacher", "student", "admin"].includes(role)) {
+      return res.status(400).json({ message: "Inavalid user role" });
+    }
+
     const userExist = await User.findOne({ email });
 
     if (userExist) {
