@@ -4,11 +4,11 @@ import { connectDB } from "./config/db.js";
 import loginRoute from "./routes/login.js";
 import signupRoute from "./routes/signUp.js";
 
-dotenv.config(); //load environmental variables
+dotenv.config();
 
 const PORT = process.env.PORT || 3500;
 
-const app = express(); //creates a new express application & assigns it to the app variable.
+const app = express();
 
 app.use(express.json());
 
