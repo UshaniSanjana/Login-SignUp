@@ -20,7 +20,7 @@ export const login = async (req, res) => {
     if (student) {
       secretKey = process.env.JWT_SECRET_STUDENT;
       role = "student";
-    } else if (teacher)) {
+    } else if (teacher) {
       secretKey = process.env.JWT_SECRET_TEACHER;
       role = "teacher";
     } else if (admin) {
