@@ -54,7 +54,7 @@ export const signup = async (req, res) => {
       });
       await userAdmin.save();
       return res.json({
-        message: `Admin ${userAdmin.name} registered successfully`,
+        message: `Admin ${userAdmin.name} registered successfully` ,
       });
     }
   } catch (error) {
