@@ -11,19 +11,15 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const teacher = await Teacher.findOne({ email });
-    const student = await Student.findOne({ email });
-    const admin = await Admin.findOne({ email });
-
     let user, secretKey, role;
 
-    if (student) {
+    if ((user = await Student.findOne({ email }))) {
       secretKey = process.env.JWT_SECRET_STUDENT;
       role = "student";
-    } else if (teacher) {
+    } else if ((user = await Teacher.findOne({ email }))) {
       secretKey = process.env.JWT_SECRET_TEACHER;
       role = "teacher";
-    } else if (admin) {
+    } else if ((user = await Admin.findOne({ email }))) {
       secretKey = process.env.JWT_SECRET_ADMIN;
       role = "admin";
     } else {
